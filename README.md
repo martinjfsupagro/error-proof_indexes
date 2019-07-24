@@ -4,7 +4,9 @@
 
 This document explains the rationale and method used to create error-proof indexes for high throughput sequencing. The whole repository can be cited as Jean-Francois Martin, 2019,  Creating error-proof_indexes for high throughput sequencing. Github repository https://github.com/martinjfsupagro/error-proof_indexes
 
-[![DOI](https://zenodo.org/badge/198625228.svg)](https://zenodo.org/badge/latestdoi/198625228)
+
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3350207.svg)](https://doi.org/10.5281/zenodo.3350207)
 
 
 
