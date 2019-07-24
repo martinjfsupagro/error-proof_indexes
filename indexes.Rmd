@@ -1,0 +1,47 @@
+---
+title: "Designing error-proof indexes for high throughput sequencing"
+author: "Jean-Francois Martin"
+date: "July 24, 2019"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("DNABarcodes")
+library("DNABarcodes")
+```
+
+```{r}
+size <- 9
+dist <- 3
+barcodes <- create.dnabarcodes(n=size, dist=dist, metric="seqlev", heuristic="ashlock", filter.triplets=TRUE, filter.gc=TRUE, filter.self_complementary=TRUE, population=200, pool = character(), iterations=100, cores=detectCores()/2, use_cache = FALSE, cost_sub = 1, cost_indel = 1) 
+```
+
+```{r}
+require(gplots)
+setDistances <- barcode.set.distances(barcodes, metric="seqlev", cores=detectCores()/2, cost_sub = 1, cost_indel = 1)
+heatmap(as.matrix(setDistances), col=redgreen(8))
+
+```
+
+
+```{r}
+n_indexes <- 384
+final_barcodes <- barcodes
+
+while (length(final_barcodes) > n_indexes) {
+  min.bc <- names(which.min(rowSums(barcode.set.distances(final_barcodes, metric="seqlev"))))
+  final_barcodes <- setdiff(final_barcodes, min.bc)
+}
+
+show(final_barcodes)
+show(analyse.barcodes(final_barcodes))
+indexes <- as.data.frame(final_barcodes)
+write.table(indexes, file=paste(n_indexes,"_",size,".txt", sep=""), sep="\t") 
+```
+
+
