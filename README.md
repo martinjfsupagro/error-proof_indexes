@@ -26,5 +26,5 @@ For my particular purpose a length of 9 nucleotides was enough to provide the 38
 
 The first part of the script search for potential indexes fitting those constraints, the second part is used to subset the indexes with maximizing the distance between the required number of indexes (here 384). All of those variables are highly customizable.
 
-See Rmd and html files for details on the script used. 
+See Rmd and html files for details on the script used.  CAUTION : if you run the script for yourself with the exact same parameters you will find a different but overlapping subset of indexes as their choice is based on a matrix of similarity that displays ties and a random process to cut between them . This does not mean that the ones designed in the companion example (384_9.txt) is better or worse. That being said, we have an extensive experience with the indexes designed here and they proved their usefulness.
 
