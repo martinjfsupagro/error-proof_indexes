@@ -14,6 +14,10 @@ This document explains the rationale and method used to create error-proof index
 
 High throughput sequencing often involves multiplexing several samples to get cost-efficient. In such case, constructing libraries with a number of different indexes, whether included in the inserts (inline) or as external indexes read separately by the sequencers, requires that the indexes are different enough so they are not confounded. Multiple strategies exist for selecting such oligonucleotide sequences, including error-proof designs that are resistant to errors. this is particularly useful as high throughput technologies are error-prone.  The reason I designed such indexes is for amplicon analyses (metabarcoding) where we pool thousands of specimens but this could be used for any application and technology requiring multiplexing.
 
+An clear example of combining indexes and sequencing adapters in 2-step PCR strategy is in Galan, M,  Pons, J‐B,  Tournayre, O, et al.  Metabarcoding for the parallel identification of several hundred predators and their prey: Application to bat species diet analysis. *Mol Ecol Resour*.  2018; 18: 474– 489. https://doi.org/10.1111/1755-0998.12749
+
+
+
 ## Method details
 
 I used a R package DNAbarcodes 1.14.0 (Buschmann,  DNABarcodes: an R package for the systematic construction of DNA sample tags, *Bioinformatics*, Volume 33, Issue 6, 15 March 2017, Pages 920–922, https://doi.org/10.1093/bioinformatics/btw759)
